@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cendral — People Intelligence for the Middle Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0E1117;
+    --ink-light: #3A3D45;
+    --ink-muted: #6B6F7A;
+    --ink-faint: #9FA3AD;
+    --surface: #FAFAF8;
+    --surface-alt: #F2F1ED;
+    --border: #E2E0D8;
+    --accent: #1A4A3A;
+    --accent-mid: #2A6B54;
+    --accent-light: #D4EDE4;
+    --accent-pale: #EDF6F2;
+    --amber: #C46A1A;
+    --amber-light: #F5E8D4;
+    --serif: 'Libre Baskerville', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --radius: 4px;
+    --radius-lg: 10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--surface);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 32px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .nav-logo span {
+    color: var(--accent-mid);
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ink-light);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    background: var(--accent);
+    color: #fff !important;
+    padding: 8px 20px;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  .nav-cta:hover { background: var(--accent-mid) !important; color: #fff; }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 96px 32px; }
+  .container { max-width: 1120px; margin: 0 auto; }
+
+  /* ─── HERO ─── */
+  #hero {
+    padding-top: 148px;
+    padding-bottom: 80px;
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .hero-grid-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 0%, transparent 40%, var(--surface) 90%);
+  }
+  .hero-inner {
+    position: relative;
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-mid);
+    background: var(--accent-pale);
+    border: 1px solid var(--accent-light);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow-dot {
+    width: 6px; height: 6px;
+    background: var(--accent-mid);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 4vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--accent-mid);
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--ink-light);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 13px 28px;
+    border-radius: var(--radius);
+    font-weight: 500;
+    font-size: 0.925rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    border: none;
+    font-family: var(--sans);
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--accent-mid); transform: translateY(-1px); }
+  .btn-secondary {
+    color: var(--ink-light);
+    font-weight: 500;
+    font-size: 0.925rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .btn-secondary:hover { color: var(--ink); }
+  .btn-secondary svg { transition: transform 0.2s; }
+  .btn-secondary:hover svg { transform: translateX(3px); }
+
+  .hero-visual {
+    position: relative;
+  }
+  .hero-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: 0 4px 24px rgba(14,17,23,0.06), 0 1px 4px rgba(14,17,23,0.04);
+    animation: floatUp 0.8s ease both;
+  }
+  @keyframes floatUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .hero-card-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+  }
+  .risk-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+  .risk-high { background: #FDECEA; color: #B91C1C; }
+  .risk-med { background: #FEF3C7; color: #92400E; }
+  .risk-low { background: var(--accent-pale); color: var(--accent); }
+
+  .attrition-list { list-style: none; }
+  .attrition-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .attrition-item:last-child { border-bottom: none; }
+  .emp-avatar {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; font-weight: 600;
+    flex-shrink: 0;
+  }
+  .emp-info { flex: 1; min-width: 0; }
+  .emp-name { font-size: 0.85rem; font-weight: 500; color: var(--ink); }
+  .emp-role { font-size: 0.75rem; color: var(--ink-muted); }
+  .risk-bar-wrap { width: 80px; }
+  .risk-bar-label { font-size: 0.7rem; color: var(--ink-muted); margin-bottom: 4px; text-align: right; }
+  .risk-bar-track { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .risk-bar-fill { height: 100%; border-radius: 2px; transition: width 1.2s ease; }
+
+  .hero-card-2 {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    box-shadow: 0 4px 24px rgba(14,17,23,0.06);
+    margin-top: 12px;
+    animation: floatUp 0.8s 0.2s ease both;
+    opacity: 0;
+  }
+  .skill-gap-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .skill-gap-row:last-child { margin-bottom: 0; }
+  .skill-label { font-size: 0.8rem; color: var(--ink-light); width: 100px; flex-shrink: 0; }
+  .skill-track { flex: 1; height: 8px; background: var(--surface-alt); border-radius: 4px; position: relative; overflow: hidden; }
+  .skill-have { height: 100%; background: var(--accent-light); border-radius: 4px; }
+  .skill-need { position: absolute; top: 0; height: 100%; background: transparent; border-right: 2px dashed var(--accent-mid); }
+  .skill-pct { font-size: 0.75rem; font-weight: 500; color: var(--ink-muted); width: 36px; text-align: right; flex-shrink: 0; }
+
+  /* ─── PROBLEM ─── */
+  #problem {
+    background: var(--ink);
+    color: #fff;
+    padding: 80px 32px;
+  }
+  .problem-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .problem-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 20px;
+  }
+  .problem-headline {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  .problem-headline em { font-style: italic; color: #9FD5BE; }
+  .problem-body {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+  }
+  .problem-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .stat-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+    transition: background 0.2s;
+  }
+  .stat-item:hover { background: rgba(255,255,255,0.07); }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-num span { color: #9FD5BE; }
+  .stat-desc {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+  }
+
+  /* ─── PRODUCT ─── */
+  #product { background: var(--surface); }
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-mid);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .section-headline {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 3vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+    max-width: 600px;
+  }
+  .section-sub {
+    font-size: 1rem;
+    color: var(--ink-light);
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 56px;
+    font-weight: 300;
+  }
+  .product-modules {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .module-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .module-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .module-card:hover { border-color: var(--accent-light); box-shadow: 0 8px 32px rgba(26,74,58,0.08); }
+  .module-card:hover::before { transform: scaleX(1); }
+  .module-icon {
+    width: 44px; height: 44px;
+    background: var(--accent-pale);
+    border: 1px solid var(--accent-light);
+    border-radius: var(--radius);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .module-icon svg { width: 22px; height: 22px; stroke: var(--accent-mid); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .module-name {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .module-desc {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    line-height: 1.65;
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+  .module-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .module-features li {
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .feature-dot {
+    width: 5px; height: 5px;
+    background: var(--accent-mid);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  /* ─── HOW IT WORKS ─── */
+  #how { background: var(--surface-alt); }
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+    margin-top: 16px;
+  }
+  .how-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(12.5% + 20px);
+    right: calc(12.5% + 20px);
+    height: 1px;
+    background: var(--border);
+    z-index: 0;
+  }
+  .how-step {
+    text-align: center;
+    padding: 0 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .step-num {
+    width: 56px; height: 56px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 0 auto 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .step-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .step-desc {
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  /* ─── WHO ─── */
+  #who { background: var(--surface); }
+  .who-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .who-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+  }
+  .who-industry {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-mid);
+    background: var(--accent-pale);
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+  .who-quote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--ink-light);
+    margin-bottom: 16px;
+  }
+  .who-attr {
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+  .who-attr strong {
+    color: var(--ink);
+    display: block;
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 2px;
+  }
+
+  /* ─── FOUNDER ─── */
+  #founder { background: var(--surface-alt); }
+  .founder-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .founder-visual {
+    position: relative;
+  }
+  .founder-frame {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: var(--accent-pale);
+    border: 1px solid var(--accent-light);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .founder-monogram {
+    font-family: var(--serif);
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--accent);
+    opacity: 0.25;
+  }
+  .founder-accent-card {
+    position: absolute;
+    bottom: -20px;
+    right: -24px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    padding: 18px 24px;
+    box-shadow: 0 8px 32px rgba(26,74,58,0.25);
+  }
+  .founder-accent-stat {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .founder-accent-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.7);
+    font-weight: 400;
+  }
+
+  .founder-label { margin-bottom: 12px; }
+  .founder-name {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .founder-title {
+    font-size: 0.95rem;
+    color: var(--accent-mid);
+    font-weight: 500;
+    margin-bottom: 28px;
+  }
+  .founder-bio {
+    font-size: 1rem;
+    color: var(--ink-light);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 28px;
+  }
+  .founder-bio p + p { margin-top: 16px; }
+  .founder-beliefs {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .belief-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .belief-icon {
+    width: 32px; height: 32px;
+    background: var(--accent-pale);
+    border: 1px solid var(--accent-light);
+    border-radius: var(--radius);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .belief-icon svg { width: 16px; height: 16px; stroke: var(--accent-mid); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .belief-text {
+    font-size: 0.875rem;
+    color: var(--ink-light);
+    line-height: 1.55;
+  }
+  .belief-text strong {
+    color: var(--ink);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* ─── CTA ─── */
+  #cta {
+    background: var(--accent);
+    padding: 80px 32px;
+    text-align: center;
+  }
+  .cta-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 16px;
+  }
+  .cta-headline {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    max-width: 480px;
+    margin: 0 auto 36px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+  .cta-form {
+    display: flex;
+    gap: 12px;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  .cta-input {
+    flex: 1;
+    padding: 13px 18px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 0.925rem;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .cta-input::placeholder { color: rgba(255,255,255,0.4); }
+  .cta-input:focus { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.15); }
+  .btn-white {
+    background: #fff;
+    color: var(--accent);
+    padding: 13px 24px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.925rem;
+    cursor: pointer;
+    border: none;
+    font-family: var(--sans);
+    white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+  .btn-white:hover { opacity: 0.9; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.4);
+    padding: 40px 32px;
+  }
+  .footer-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+  }
+  .footer-logo span { color: #9FD5BE; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.35);
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: rgba(255,255,255,0.6); }
+  .footer-copy { font-size: 0.8rem; }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner, .problem-inner, .founder-inner { grid-template-columns: 1fr; gap: 48px; }
+    .product-modules { grid-template-columns: 1fr; }
+    .how-steps { grid-template-columns: repeat(2, 1fr); }
+    .how-steps::before { display: none; }
+    .who-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .hero-visual { display: none; }
+    .founder-accent-card { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">cend<span>ral</span></div>
+    <ul class="nav-links">
+      <li><a href="#product">Product</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#who">Who it's for</a></li>
+      <li><a href="#founder">Founder</a></li>
+      <li><a href="#cta" class="nav-cta">Request access</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
+        Now in early access
+      </div>
+      <h1 class="hero-headline">
+        People intelligence<br>your mid-market<br><em>actually deserves</em>
+      </h1>
+      <p class="hero-sub">Cendral gives 200–1,000 person companies the workforce analytics capability that enterprise vendors charge millions for. Predict attrition. Map skill gaps. Match talent internally. Hire smarter.</p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn-primary">Request early access</a>
+        <a href="#product" class="btn-secondary">
+          See how it works
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <span class="hero-card-title">Attrition risk · Q3 2025</span>
+          <span class="risk-badge risk-high">3 critical</span>
+        </div>
+        <ul class="attrition-list">
+          <li class="attrition-item">
+            <div class="emp-avatar" style="background:#FDECEA; color:#B91C1C;">PR</div>
+            <div class="emp-info">
+              <div class="emp-name">Priya R.</div>
+              <div class="emp-role">Senior Engineer</div>
+            </div>
+            <div class="risk-bar-wrap">
+              <div class="risk-bar-label">87%</div>
+              <div class="risk-bar-track"><div class="risk-bar-fill" style="width:87%; background:#EF4444;"></div></div>
+            </div>
+            <span class="risk-badge risk-high" style="font-size:0.68rem;">High</span>
+          </li>
+          <li class="attrition-item">
+            <div class="emp-avatar" style="background:#FEF3C7; color:#92400E;">MK</div>
+            <div class="emp-info">
+              <div class="emp-name">Marcus K.</div>
+              <div class="emp-role">Product Manager</div>
+            </div>
+            <div class="risk-bar-wrap">
+              <div class="risk-bar-label">62%</div>
+              <div class="risk-bar-track"><div class="risk-bar-fill" style="width:62%; background:#F59E0B;"></div></div>
+            </div>
+            <span class="risk-badge risk-med" style="font-size:0.68rem;">Med</span>
+          </li>
+          <li class="attrition-item">
+            <div class="emp-avatar" style="background:var(--accent-pale); color:var(--accent);">AL</div>
+            <div class="emp-info">
+              <div class="emp-name">Aisha L.</div>
+              <div class="emp-role">Sales Lead</div>
+            </div>
+            <div class="risk-bar-wrap">
+              <div class="risk-bar-label">28%</div>
+              <div class="risk-bar-track"><div class="risk-bar-fill" style="width:28%; background:var(--accent-mid);"></div></div>
+            </div>
+            <span class="risk-badge risk-low" style="font-size:0.68rem;">Low</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="hero-card-2">
+        <div class="hero-card-header">
+          <span class="hero-card-title">Skills gap · Engineering team</span>
+        </div>
+        <div class="skill-gap-row">
+          <span class="skill-label">ML / AI</span>
+          <div class="skill-track">
+            <div class="skill-have" style="width:34%;"></div>
+            <div class="skill-need" style="left:72%;"></div>
+          </div>
+          <span class="skill-pct" style="color:#B91C1C;">−38%</span>
+        </div>
+        <div class="skill-gap-row">
+          <span class="skill-label">Cloud infra</span>
+          <div class="skill-track">
+            <div class="skill-have" style="width:58%;"></div>
+            <div class="skill-need" style="left:75%;"></div>
+          </div>
+          <span class="skill-pct" style="color:#92400E;">−17%</span>
+        </div>
+        <div class="skill-gap-row">
+          <span class="skill-label">Python</span>
+          <div class="skill-track">
+            <div class="skill-have" style="width:80%;"></div>
+            <div class="skill-need" style="left:70%;"></div>
+          </div>
+          <span class="skill-pct" style="color:var(--accent);">+10%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="problem-inner">
+    <div>
+      <div class="problem-label">The gap nobody talks about</div>
+      <h2 class="problem-headline">Workday is for enterprises. Spreadsheets are for everyone else. <em>Until now.</em></h2>
+      <p class="problem-body">Companies between 200 and 1,000 employees are the invisible middle of the workforce tech market. Too large to run on gut instinct, too small to afford the platforms built for Fortune 500s. They make million-dollar hiring and retention decisions with the same tools a startup uses on day one.</p>
+    </div>
+    <div class="problem-stats fade-in">
+      <div class="stat-item">
+        <div class="stat-num">39<span>%</span></div>
+        <div class="stat-desc">of key workforce skills are expected to change by 2030 — mid-market companies have no system to track this in real time.</div>
+      </div>
+      <div class="stat-item" style="margin-top:8px;">
+        <div class="stat-num">$<span>200K</span></div>
+        <div class="stat-desc">average cost to replace a senior leader — yet most mid-market HR teams find out someone is leaving the day they resign.</div>
+      </div>
+      <div class="stat-item" style="margin-top:8px;">
+        <div class="stat-num">3<span>×</span></div>
+        <div class="stat-desc">better workforce planning outcomes for companies using predictive people analytics, versus those relying on reactive reporting.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT -->
+<section id="product">
+  <div class="container">
+    <span class="section-label">The platform</span>
+    <h2 class="section-headline">Four modules. One source of truth for your people.</h2>
+    <p class="section-sub">Cendral integrates with your HRIS, ATS, and engagement tools in under a day — then surfaces decisions you never had visibility into before.</p>
+
+    <div class="product-modules">
+
+      <div class="module-card fade-in">
+        <div class="module-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <div class="module-name">Skills Gap Mapping</div>
+        <p class="module-desc">Understand the delta between what your teams know today and what your roadmap requires in 6–18 months. Built on live job market signals, not static competency frameworks.</p>
+        <ul class="module-features">
+          <li><span class="feature-dot"></span>Role-level skill inventories from HRIS + performance data</li>
+          <li><span class="feature-dot"></span>Forward-looking gap scoring against market benchmarks</li>
+          <li><span class="feature-dot"></span>L&D prioritization recommendations with ROI estimates</li>
+          <li><span class="feature-dot"></span>Org-wide heat map export for leadership reviews</li>
+        </ul>
+      </div>
+
+      <div class="module-card fade-in">
+        <div class="module-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.4 9a.6.6 0 01-.6.6H6.2a.6.6 0 01-.6-.6V6.4a.6.6 0 01.6-.6h11.6a.6.6 0 01.6.6V9z" stroke="none" fill="currentColor" opacity="0.15"/><path d="M7 17l4-4 4 4 4-8"/></svg>
+        </div>
+        <div class="module-name">Attrition Prediction</div>
+        <p class="module-desc">Know who is likely to leave 90 days before they resign. Cendral's model weighs tenure, engagement, compensation drift, promotion lag, and team dynamics together.</p>
+        <ul class="module-features">
+          <li><span class="feature-dot"></span>Individual risk scores with explainable signal breakdowns</li>
+          <li><span class="feature-dot"></span>Manager-level digest for 1:1 conversation prompts</li>
+          <li><span class="feature-dot"></span>Cohort clustering to find systemic retention issues</li>
+          <li><span class="feature-dot"></span>Slack/email alerts when risk thresholds are crossed</li>
+        </ul>
+      </div>
+
+      <div class="module-card fade-in">
+        <div class="module-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4m-5 6l5-2 5 2"/></svg>
+        </div>
+        <div class="module-name">Internal Mobility Matching</div>
+        <p class="module-desc">Before you post a job externally, surface the internal candidates who could grow into it. Reduce external hiring costs by 40% and give high-performers a visible growth path.</p>
+        <ul class="module-features">
+          <li><span class="feature-dot"></span>Skills-adjacency matching across departments</li>
+          <li><span class="feature-dot"></span>Upskill gap estimate for each internal candidate</li>
+          <li><span class="feature-dot"></span>Mobility history tracking and success analytics</li>
+          <li><span class="feature-dot"></span>Manager approval workflows built in</li>
+        </ul>
+      </div>
+
+      <div class="module-card fade-in">
+        <div class="module-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="module-name">Interview Intelligence</div>
+        <p class="module-desc">Structure your hiring process around the skills you actually need to close. Cendral ties interview scorecards to your skills gap analysis and predicts 90-day ramp time per candidate.</p>
+        <ul class="module-features">
+          <li><span class="feature-dot"></span>AI-generated interview guides aligned to skills gaps</li>
+          <li><span class="feature-dot"></span>Structured scorecard analysis and bias flagging</li>
+          <li><span class="feature-dot"></span>Offer calibration based on compensation market data</li>
+          <li><span class="feature-dot"></span>Post-hire validation loop to improve future scoring</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <span class="section-label">How it works</span>
+    <h2 class="section-headline">Live in 24 hours, insights in 48.</h2>
+    <p class="section-sub">No months-long implementation. No consultant fees. Cendral connects to your existing stack and starts surfacing actionable intelligence immediately.</p>
+
+    <div class="how-steps fade-in">
+      <div class="how-step">
+        <div class="step-num">1</div>
+        <div class="step-title">Connect your stack</div>
+        <p class="step-desc">Native integrations with BambooHR, Rippling, Gusto, Lever, Greenhouse, Workable, and more. OAuth in minutes.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">2</div>
+        <div class="step-title">Baseline in 48 hrs</div>
+        <p class="step-desc">Cendral processes your historical data to build skills profiles, tenure maps, and compensation benchmarks automatically.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">3</div>
+        <div class="step-title">Act on insights</div>
+        <p class="step-desc">Dashboards, Slack digests, and manager reports surface what needs attention — with specific recommended actions.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">4</div>
+        <div class="step-title">Measure outcomes</div>
+        <p class="step-desc">Track retention improvements, internal fill rates, and skill coverage over time. Prove the ROI of people decisions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section id="who">
+  <div class="container">
+    <span class="section-label">Who it's for</span>
+    <h2 class="section-headline">Built for the companies left behind by enterprise HR tech.</h2>
+    <p class="section-sub">If you're between 200 and 1,000 employees, growing fast, and tired of making people decisions with incomplete data — Cendral was built for you.</p>
+
+    <div class="who-grid fade-in">
+      <div class="who-card">
+        <span class="who-industry">Series B–D Tech</span>
+        <p class="who-quote">"We were scaling to 300 people and still running attrition analysis in Excel. By the time we knew someone was unhappy, they had already signed elsewhere."</p>
+        <div class="who-attr"><strong>Director of People Operations</strong>SaaS company, 280 employees</div>
+      </div>
+      <div class="who-card">
+        <span class="who-industry">Professional Services</span>
+        <p class="who-quote">"We had 14 open roles we didn't realize we could fill internally. We were spending $200K on external recruiting for talent that already worked for us."</p>
+        <div class="who-attr"><strong>Head of Talent</strong>Management consultancy, 450 employees</div>
+      </div>
+      <div class="who-card">
+        <span class="who-industry">Manufacturing / Ops</span>
+        <p class="who-quote">"Our skills gaps were invisible until a critical project failed. We needed to see months ahead, not just react when someone walks out."</p>
+        <div class="who-attr"><strong>VP of Human Resources</strong>Industrial firm, 680 employees</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder">
+  <div class="founder-inner">
+    <div class="founder-visual fade-in">
+      <div class="founder-frame">
+        <span class="founder-monogram">MA</span>
+      </div>
+      <div class="founder-accent-card">
+        <div class="founder-accent-stat">200–1K</div>
+        <div class="founder-accent-label">the underserved middle</div>
+      </div>
+    </div>
+    <div class="fade-in">
+      <span class="section-label founder-label">The founder</span>
+      <h2 class="founder-name">Mann Agarwal</h2>
+      <div class="founder-title">Founder & CEO, Cendral</div>
+      <div class="founder-bio">
+        <p>Mann has spent years watching mid-market companies lose their best people to competitors who could predict it coming — and watching HR leaders fight for credibility at the leadership table with nothing but lagging indicators.</p>
+        <p>His conviction: the 200–1,000 employee band is the most consequential yet most underserved segment in workforce technology. These companies grow fast, compete hard for talent, and make decisions that determine whether they become something enduring — all without the tools to do it intelligently.</p>
+        <p>Cendral is built on the belief that people intelligence should be a default capability for every growing company, not a privilege reserved for enterprises with eight-figure HR tech budgets.</p>
+      </div>
+      <div class="founder-beliefs">
+        <div class="belief-item">
+          <div class="belief-icon">
+            <svg viewBox="0 0 16 16"><path d="M8 2v4m0 0l2-2m-2 2L6 4"/><circle cx="8" cy="10" r="3"/></svg>
+          </div>
+          <div class="belief-text">
+            <strong>Decisions over dashboards</strong>
+            People analytics that doesn't drive a specific action is just a report. Every Cendral insight surfaces a recommended next step.
+          </div>
+        </div>
+        <div class="belief-item">
+          <div class="belief-icon">
+            <svg viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 8h6M8 5v6"/></svg>
+          </div>
+          <div class="belief-text">
+            <strong>Integrated, not isolated</strong>
+            HR data has only become siloed because the tools for the middle market haven't existed. Cendral connects everything that already exists.
+          </div>
+        </div>
+        <div class="belief-item">
+          <div class="belief-icon">
+            <svg viewBox="0 0 16 16"><path d="M3 10l2-4 3 3 2-5 3 6"/></svg>
+          </div>
+          <div class="belief-text">
+            <strong>Forward-looking by default</strong>
+            The average HRIS tells you what happened. Cendral tells you what's coming — and what to do before it does.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-eyebrow">Early access · Limited seats</div>
+    <h2 class="cta-headline">Your people data is already telling you something. Are you listening?</h2>
+    <p class="cta-sub">Join the first cohort of mid-market companies who will see attrition coming before it happens and build skill coverage before gaps become crises.</p>
+    <div class="cta-form">
+      <input type="email" class="cta-input" placeholder="Work email address">
+      <button class="btn-white">Request access</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">cend<span>ral</span></div>
+    <div class="footer-links">
+      <a href="#product">Product</a>
+      <a href="#founder">Founder</a>
+      <a href="mailto:hello@cendral.com">Contact</a>
+      <a href="#">Privacy</a>
+    </div>
+    <div class="footer-copy">© 2025 Cendral, Inc. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id === '#') return;
+      const el = document.querySelector(id);
+      if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
